@@ -1,0 +1,21 @@
+{% include 'header/header.html' %}
+<table class="table table-bordered table-striped tables">
+    <thead>
+    <tr>
+        <th>ID Kelas</th>
+        <th>Nama Kelas</th>
+        <th>Tindakan</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for k in  kelas %}
+        <tr>
+            <td>{{ k.class_id }}</td>
+            <td>{{ k.class_name }}</td>
+            <td><a class="btn btn-warning d-block text-white" href="#">Edit Data</a>
+                <a class="btn btn-danger d-block text-white" onclick="return confirm('Hapus Kelas ?')" href="/hapus-kelas/?id-kelas={{ k.class_id }}">Hapus Data</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% include 'header/footer.html' %}
