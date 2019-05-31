@@ -1,12 +1,14 @@
 {% include 'header/header.html' %}
 <body>
 <div class="container">
-    <form action="/submit/" method="POST">
+    <form action="/siswa/tambah-siswa-proses/" method="POST">
+
         {% csrf_token %}
-        <p>{{ request.session.username }}</p>
+        {#        <p>{{ request.session.username }}</p>#}
         <div class="form-group">
             <label>Student ID</label>
-            <input type="text" name="student_id" class="form-control text-uppercase"/>
+            <input type="text" readonly name="student_id" value="{{ angkatan }}.{{ jurusan }}.{{ last }}"
+                   class="form-control text-uppercase"/>
         </div>
         <div class="form-group">
             <label>First Name</label>
@@ -21,19 +23,28 @@
             <input type="text" name="pob" class="form-control text-uppercase"/>
         </div>
         <div class="form-group">
+            <label>Kelas</label>
+            <select class="form-control" name="kelas" required>
+                <option value="">--Silahkan Pilih--</option>
+                {% for k in kelas %}
+                    <option value="{{ k.class_id }}">{{ k.class_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
             <label>Date of Birth</label>
             <input type="date" name="tanggal_lahir" class="form-control"/>
         </div>
-         <div class="form-group">
+        <div class="form-group">
             <label>Email</label>
             <input type="email" name="student_email" class="form-control"/>
         </div>
-         <div class="form-group">
+        <div class="form-group">
             <label>Phone Number</label>
             <input type="text" name="student_phone" class="form-control"/>
         </div>
         <div class="form-group">
-            <input type="submit" name="cari" value="Cari Siswa" class="btn btn-primary"/>
+            <input type="submit" name="cari" value="Simpan" class="btn btn-primary"/>
         </div>
     </form>
 </div>

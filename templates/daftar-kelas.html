@@ -1,4 +1,7 @@
 {% include 'header/header.html' %}
+<div class="container-fluid text-right">
+    <a href="/siswa/tambah-siswa/" class="btn btn-primary mb-4">Tambah Kelas</a>
+</div>
 <table class="table table-bordered table-striped tables">
     <thead>
     <tr>
@@ -13,7 +16,7 @@
             <td>{{ k.class_id }}</td>
             <td>{{ k.class_name }}</td>
             <td><a class="btn btn-warning d-block text-white" href="#">Edit Data</a>
-                <a class="btn btn-danger d-block text-white" onclick="return confirm('Hapus Kelas ?')" href="/hapus-kelas/?id-kelas={{ k.class_id }}">Hapus Data</a></td>
+                <a class="btn btn-danger d-block text-white" onclick="return confirm('Hapus Kelas ?')" href="/kelas/hapus-kelas/?id-kelas={{ k.class_id }}">Hapus Data</a></td>
         </tr>
     {% endfor %}
     </tbody>
